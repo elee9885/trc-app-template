@@ -4,13 +4,13 @@ import { getAnalytics } from 'firebase/analytics';
 import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
-  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
+  apiKey: "AIzaSyCb8eiA93r7evnsq4FerI1hV116pKXk3hwU",
+  authDomain: "transitional-care-management.firebaseapp.com",
+  projectId: "transitional-care-management",
+  storageBucket: "transitional-care-management.appspot.com",
+  messagingSenderId: "227937837082",
+  appId: "1:227937837082:web:49b95818bc4601a7d371a3",
+  measurementId: "G-26NT7G9PWC"
 };
 
 const app = getApps().length ? getApp() : initializeApp(firebaseConfig);

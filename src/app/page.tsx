@@ -6,6 +6,7 @@ import { postTo1healthAPI } from '@/lib/api'
 
 import { db } from '@/lib/firebase'
 import { collection, addDoc } from 'firebase/firestore'
+import ExampleCard from '@/components/ExampleCard'
 
 export default function Home() {
   // Get token sent from the parent iframe (via postMessage)
@@ -52,10 +53,18 @@ export default function Home() {
       {token ? (
         <>
           <p className="text-green-500">✅ Token acquired!</p>
+
           {userInfo ? (
-            <pre className="mt-4 bg-gray-800 text-white p-4 rounded w-full max-w-xl overflow-auto">
-              {JSON.stringify(userInfo, null, 2)}
-            </pre>
+            <>
+              <pre className="mt-4 bg-gray-800 text-white p-4 rounded w-full max-w-xl overflow-auto">
+                {JSON.stringify(userInfo, null, 2)}
+              </pre>
+
+              {/* Render example Tailwind UI card */}
+              <div className="mt-6">
+                <ExampleCard />
+              </div>
+            </>
           ) : (
             <p>Loading user info...</p>
           )}
