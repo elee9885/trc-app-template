@@ -1,36 +1,122 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🔐 TRC App Template (1health Embedded App)
 
-## Getting Started
+This project is a reusable app template for building iframe-embedded tools on the 1health platform.It includes support for 1health JWT authentication, Firebase backend integration, and AI-assisted development setup.
 
-First, run the development server:
+📦 Tech Stack
 
-```bash
+Frontend: Next.js 15 (App Router) + Tailwind CSS + TypeScript
+
+Backend: Firebase (Firestore, Hosting)
+
+Deployment: Static Export + Firebase Hosting
+
+AI-Assist: GitHub Copilot, GPT-4o (MCP support in progress)
+
+🔐 Features
+
+✅ Auth via postMessage (from 1health parent iframe)
+
+✅ use1healthAuth.ts hook to receive JWT token
+
+✅ Reusable postTo1healthAPI wrapper for calling 1health APIs
+
+✅ Firebase Firestore write example (supplemental data)
+
+✅ Fully static-exportable (output: 'export')
+
+✅ Ready for iframe embedding inside the 1health platform
+
+✅ GitHub-integrated dev pipeline (CI/CD coming soon)
+
+🚀 Deployment (via Firebase Hosting)
+
+📁 Static Export + Hosting
+
+npm run build
+npm run export
+firebase deploy
+
+The app is statically exported to the /out directory.
+
+Firebase Hosting serves the contents of /out as the root.
+
+✅ Firebase Setup
+
+Install Firebase CLI if not already:
+
+npm install -g firebase-tools
+
+Login and initialize:
+
+firebase login
+firebase init
+
+Choose Hosting and Firestore, set public directory to out.
+
+Configure firebase.json:
+
+{
+  "hosting": {
+    "public": "out",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      { "source": "**", "destination": "/index.html" }
+    ]
+  }
+}
+
+🧪 Local Dev
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Runs localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Uses .env.local to access Firebase + allowed origins
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Token is received from parent iframe when embedded inside 1health
 
-## Learn More
+🌐 Env Setup (.env.local)
 
-To learn more about Next.js, take a look at the following resources:
+NEXT_PUBLIC_ALLOWED_ORIGINS=https://app.1health.io
+NEXT_PUBLIC_FIREBASE_API_KEY=your-api-key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your-auth-domain
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your-project-id
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+🧠 AI-Assisted Development Pipeline
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Goals
 
-## Deploy on Vercel
+Use shared utility files (lib/use1healthAuth.ts, lib/firebase.ts, etc.)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Let GitHub Copilot / GPT understand auth and API patterns
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Future integration with MCP (Model Context Protocol)
+
+Shared component library via Tailwind UI (in progress)
+
+Tools
+
+GitHub Copilot
+
+GPT-4 / GPT-4o
+
+Miro (UX + flowcharts)
+
+n8n (workflow/webhook orchestration – WIP)
+
+📁 Project Structure
+
+trc-app-template/
+├── app/
+│   └── page.tsx
+├── lib/
+│   ├── use1healthAuth.ts
+│   ├── api.ts
+│   └── firebase.ts
+├── out/
+├── public/
+├── .env.local
+├── firebase.json
+├── next.config.ts
+├── package.json
+
