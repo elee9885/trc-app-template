@@ -35,4 +35,3 @@ This project uses the modern `output: 'export'` static export approach introduce
 ```bash
 npm run build
 firebase deploy
-
